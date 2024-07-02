@@ -1,36 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Base64 to Image</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 Image</title>
 </head>
 <body>
-
-<input type="text" id="base64Input" placeholder="Enter Base64 string">
-<button onclick="downloadImage()">Download Image</button>
-
-<script>
-function downloadImage() {
-    // Get the base64 string from the input
-    let base64String = firstRow['Image']
-
-    // Convert the base64 string to a binary blob
-    let byteCharacters = atob(base64String.split(',')[1]);
-    let byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    let byteArray = new Uint8Array(byteNumbers);
-    let blob = new Blob([byteArray], { type: 'image/jpeg' });
-
-    // Create a link element and trigger a download
-    let link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'image.jpg';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-</script>
-
+    <img id="yourImageElementId" alt="Image will appear here">
+    <script src="photo.js"></script>
 </body>
 </html>
