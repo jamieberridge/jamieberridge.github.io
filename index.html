@@ -6,9 +6,23 @@
     <title>Mealin Take 2</title>
 </head>
 <body>
-    <img src="https://mealinstorage.blob.core.windows.net/foodimages/cucumber.jpeg" alt="Image Description" />
     <h1>Cucumber :)</h1>
+    <img id="foodImage" src="" alt="Food Image">
+    
+    <script>
+        async function getImage() {
+            try {
+                const response = await fetch('/api/getImage'); // Fetch data from your API endpoint
+                const data = await response.json(); // Parse JSON response
+                const imageURL = data.imageURL; // Extract imageURL from response
 
-    <script src="photo.js"></script>
+                document.getElementById('foodImage').src = imageURL; // Set image source
+            } catch (error) {
+                console.error('Error fetching image:', error);
+            }
+        }
+
+        getImage(); // Call function to fetch and display image
+    </script>
 </body>
 </html>
